@@ -1,0 +1,33 @@
+image: mcr.microsoft.com/dotnet/sdk:5.0
+
+stages:
+  - build
+  - test
+ # - deploy
+
+before_script:
+  - 'dotnet restore'
+build_job:
+  stage: build
+  script:
+    - 'dotnet build --no-restore'
+
+test_job:
+  stage: test
+  rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script:
+    - 'dotnet test --no-restore'
+  dependencies:
+    - build_job
+
+#deploy_job:
+#  stage: deploy
+#  only:
+#    - master
+#  environment: production
+#  artifacts:
+#    paths:
+#      - publish/
+#  script:
+#    - 'dotnet publish -c Release -o ../publish MyApp/MyApp.csproj'

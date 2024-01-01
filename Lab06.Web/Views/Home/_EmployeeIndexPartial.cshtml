@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Lab06.Web.ViewModels.UserViewModel>
+@{
+    ViewData["Title"] = "Park Attractions";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="script" href="~/js/site.js" />
+</head>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <label for="First-Name">First Name</label>
+            </th>
+            <th>
+                <label for="Surname">Surname</label>
+            </th>
+            <th>
+                <label for="UserName">UserName</label>
+            </th>
+            <th>
+                <label for="Email">Email</label>
+            </th>
+            <th>
+                <label>Show Tickets</label>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a class="btn btnWarning" asp-controller="Users" asp-action="ShowTickets" asp-route-UserId="@item.UserId">Show Tickets</a>
+            </td>
+        </tr>
+    }
+</table>

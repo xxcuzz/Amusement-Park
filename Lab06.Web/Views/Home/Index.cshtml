@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Lab06.Web.ViewModels.IndexViewModel>
+@{
+    ViewData["Title"] = "Park Attractions";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="script" href="~/js/site.js" />
+</head>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <label for="Image">Image</label>
+            </th>
+            <th>
+                <label for="Park-Attraction-Name">Name<label>
+            </th>
+            <th>
+                <label for="Price">Price</label>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="attraction-icon" src="@Url.Content(item.Image)" alt="Image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+    }
+</table>

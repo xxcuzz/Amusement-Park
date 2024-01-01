@@ -1,0 +1,60 @@
+﻿@model Lab06.Web.ViewModels.EditParkAttractionViewModel
+@using Lab06.BLL.EntitiesDTO
+@using Microsoft.AspNetCore.Http
+@using System.IO
+@using Lab06.BLL.Helpers
+
+@{
+    ViewData["Title"] = "Edit attraction";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-controller="ManageAttractions" asp-route-id="Model.Id" id="edit-attraction-form" method="post" enctype=multipart/form-data>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Id" class="form-control" hidden />
+            </div>
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input asp-for="Name" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label for="ImagePath">Image</label>
+                <input asp-for="ImagePath" accept="image/*" style="display:block" required hidden/>
+                <img class="attraction-icon" src="@Url.Content(Model.ImagePath)" alt="Image" />
+            </div>
+            <div class="form-group">
+                <input type="file" name="attractionImage" accept="image/*" style="display:block"/>
+            </div>
+            <div class="form-group">
+                <label for="Price">Price</label>
+                <input asp-for="Price" class="form-control" required/>
+            </div>
+
+            <button id="update-attraction-button" type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+@functions{
+    string FormFileToString(IFormFile file)
+    {
+        using (var ms = new MemoryStream())
+        {
+            file.CopyTo(ms);
+            var fileBytes = ms.ToArray();
+            return Convert.ToBase64String(fileBytes);
+        }
+    }
+}
+@section scripts 
+{
+    <script>
+        var form = document.getElementById('edit-attraction-form');
+        var submitButton = document.getElementById('update-attraction-button');
+
+        form.addEventListener('submit', function() {
+            submitButton.setAttribute('disabled', 'disabled');	
+        }, false);
+    </script>
+}

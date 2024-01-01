@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Lab06.Web.ViewModels.TicketViewModel>
+@{
+    ViewData["Title"] = "Tickets";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <label for="Image">Image</label>
+            </th>
+            <th>
+                <label for="Park-Attraction-Name">Name</label>
+            </th>
+            <th>
+                <label for="Price">Price</label>
+            </th>
+            <th>
+                <label for="Purchase-Time">Purchase time</label>
+            </th>
+            @if (User.IsInRole("Employee"))
+            {
+                <th>
+                    <label>Manage</label>
+                </th>
+            }
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="attraction-icon" src="@Url.Content(item.ImagePath)" alt="Image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttractionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseTime)
+            </td>
+            @if (User.IsInRole("Employee"))
+            {
+                <td>
+                    <form asp-controller="Ticket" asp-action="Delete" asp-route-userId="@item.UserId" asp-route-parkAttractionId="@item.AttractionId" method="post">
+                        <button class="btn btn-secondary btnDangerOutline" onclick="return confirm('Are you sure you want to delete park attraciton : @item.AttractionName')">X</button>
+                    </form>
+                </td>
+            }
+        </tr>
+    }
+</table>

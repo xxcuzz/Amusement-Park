@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Lab06.Web.ViewModels.IndexViewModel>
+@{
+    ViewData["Title"] = "Park Attractions";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="script" href="~/js/site.js" />
+</head>
+
+<div style="margin: 1em auto; width: 100%; text-align: center">
+    <a asp-controller="ManageAttractions" asp-action="Add" class="btn btn-secondary btnSuccessOutline" style="vertical-align:top">Create Attraction</a>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <label for="Image">Image</label>
+            </th>
+            <th>
+                <label for="Park-Attraction-Name">Name<label>
+            </th>
+            <th>
+                <label for="Price">Price</label>
+            </th>
+            <th>
+                <label>Manage</label>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="attraction-icon" src="@Url.Content(item.Image)" alt="Image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <form asp-controller="ManageAttractions" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                    <a class="btn btnWarning" asp-controller="ManageAttractions" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <button class="btn btn-secondary btnDangerOutline" onclick="return confirm('Are you sure you want to delete park attraciton : @item.Name')">X</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

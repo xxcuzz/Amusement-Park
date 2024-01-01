@@ -1,0 +1,193 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: hsl(27deg 39% 95%);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.attraction-icon {
+    max-height: 80px;
+    max-width: 80px;
+}
+
+.table {
+    text-align: center;
+    background-color: hsl(0deg 0% 100%);
+}
+
+    .table > tbody > tr > td {
+        vertical-align: middle;
+    }
+
+.ticket-form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ticket-field-label {
+    margin-right: 4px;
+}
+
+.ticket-field-input {
+    width: 35px;
+    height: 30px;
+    border: none;
+    border: 1px solid hsl(0deg 0% 43%);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+    .ticket-field-input:focus {
+        outline: none;
+    }
+
+.ticket-form-btnSubmit {
+    cursor: pointer;
+    min-height: 44px;
+    padding: 2px 20px;
+    background-color: rgb(230, 150, 66);
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    min-width: 130px;
+}
+
+    .ticket-form-btnSubmit:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+.btnSuccess {
+    background-color: #64766A;
+    color: #fff;
+}
+    .btnSuccess:hover {
+        color: #fff;
+    }
+
+.btnSuccessOutline {
+    background-color: #fff;
+    color: #64766A;
+    border-color: #64766A;
+    border-radius: 4px;
+}
+    .btnSuccessOutline:hover {
+        background-color: #64766A;
+        color: #fff;
+        border-color: #64766A;
+    }
+
+.btnWarning {
+    background-color: rgb(230, 150, 66);
+    color: #fff;
+}
+
+    .btnWarning:hover {
+        color: #fff;
+    }
+
+.btnDangerOutline {
+    background-color: #fff;
+    color: rgb(220, 73, 85);
+    border-color: rgb(220, 73, 85);
+    border-radius: 4px;
+}
+    .btnDangerOutline:hover {
+        background-color: rgb(220, 73, 85);
+        color: #fff;
+        border-color: rgb(220, 73, 85);
+    }
+
+
+.btnTopUpBalance {
+    background-color: #64766A;
+    color: #fff;
+    width: 100%;
+}
+
+    .btnTopUpBalance:hover {
+        color: #fff;
+    }
+
+
+.btnShowTickets {
+    background-color: rgb(230, 150, 66);
+    color: #fff;
+    width: 100%;
+    margin-top: 7px;
+}
+
+    .btnShowTickets:hover {
+        color: #fff;
+    }

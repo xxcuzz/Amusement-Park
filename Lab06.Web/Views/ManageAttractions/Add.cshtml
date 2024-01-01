@@ -1,0 +1,38 @@
+﻿@model Lab06.Web.ViewModels.AddParkAttractionViewModel
+@{
+    ViewData["Title"] = "Add attraction";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add" asp-controller="ManageAttractions" asp-route-id="Model.Id" id="add-attraction-form" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input asp-for="Image" accept="image/*" style="display:block" required/>
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input asp-for="Price" class="form-control" required/>
+            </div>
+
+            <button id="add-attraction-button" type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+@section scripts 
+{
+    <script>
+        var form = document.getElementById('add-attraction-form');
+        var submitButton = document.getElementById('add-attraction-button');
+
+        form.addEventListener('submit', function() {
+            submitButton.setAttribute('disabled', 'disabled');	
+        }, false);
+    </script>
+}

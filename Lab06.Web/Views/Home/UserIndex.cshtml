@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Lab06.Web.ViewModels.IndexViewModel>
+@{
+    ViewData["Title"] = "Park Attractions";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/spinner.css" asp-append-version="true" />
+    <link rel="script" href="~/js/site.js" />
+</head>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <label for="Image">Image</label>
+            </th>
+            <th>
+                <label for="Park-Attraction-Name">Name<label>
+            </th>
+            <th>
+                <label for="Price">Price</label>
+            </th>
+            <th>
+                <label>Purchasing</label>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="attraction-icon" src="@Url.Content(item.Image)" alt="Image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <form class="ticket-form" id="ticket-form-@item.Id">
+                    <div class="field">
+                        <label for="ticketCount" class="ticket-field-label"> Tickets</label>
+                        <input id="ticket-input-@item.Id" class="ticket-field-input" type="text" placeholder="0" />
+                    </div>
+                    
+                    <button type="submit" id="btnSubmit-@item.Id" class="ticket-form-btnSubmit" disabled>
+                        Purchase
+                    </button>
+                    <div class=spinner-container id="spinner-@item.Id">
+                        <span class="spinner"></span>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

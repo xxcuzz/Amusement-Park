@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Lab06.Web.ViewModels.UserViewModel>
+@{
+    ViewData["Title"] = "Park Attractions";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="script" href="~/js/site.js" />
+</head>
+<body>
+    <form asp-controller="Home" asp-action="Index" class="form-inline mb-2 justify-content-center">
+        <div class="form-group">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="SearchString">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+    </form>
+    
+    <partial name="_EmployeeIndexPartial" />
+</body>
